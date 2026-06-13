@@ -1,41 +1,23 @@
 import React from "react";
-import { headers } from "next/headers";
 import BlogList from "./BlogList";
 
 export async function generateMetadata() {
-  const h = await headers();
-  const domain = h.get("host") || "localhost";
-
-  const cleanDomain = domain.replace(/^www\./, "");
-
   return {
-    title: "Faridabad Real Estate Blog | Investment & Buying Guides",
+    title: "House Rental Blog | Renting Tips, Tenant Guide & Property News in Faridabad",
     description:
-      "Explore expert insights on Faridabad real estate. Get property investment tips, sector-wise guides, market trends, pricing updates, and home buying advice.",
+      "Read expert blogs on house renting tips in Faridabad, rental market trends, tenant rights, rent agreement guide, best localities to rent a house & property news to help you make the smartest rental decision.",
     keywords: [
-      "Faridabad real estate blog",
-      "property investment in Faridabad",
-      "buy property in Faridabad",
-      "Faridabad property price trends",
-      "best sectors in Faridabad",
-      "real estate buying guide"
+      "house rental blog Faridabad", "renting tips Faridabad", "rental market trends Faridabad", "tenant rights India", "rent agreement guide Faridabad", "best localities to rent house Faridabad", "real estate news Faridabad", "affordable rental homes Faridabad", "house rent price trends Faridabad", "independent house rental checklist Faridabad"
     ],
     alternates: {
-      canonical: `https://${cleanDomain}/blog`
-    },
-    openGraph: {
-      title: "Faridabad Real Estate Blog | Investment & Buying Guides",
-      description:
-        "Stay updated with property trends, investment tips, and expert real estate insights in Faridabad.",
-      url: `https://${cleanDomain}/blog`,
-      type: "website",
+      canonical: "www.houseforrentinfaridabad.com/blog", // 🔥 apna final domain yaha set kar dena
     },
   };
 }
 
 const page = () => {
   return (
-    <div className="min-h-screen bg-red-50">
+    <div className="min-h-screen bg-gradient-to-br from-[#FFF8F9] to-[#F3E3E8]">
       <BlogList />
     </div>
   );

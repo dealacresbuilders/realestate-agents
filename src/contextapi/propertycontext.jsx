@@ -1,113 +1,89 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, useRef } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 
-const PropertyContext = createContext();
+const DealerContext = createContext(null);
 
-const DEFAULT_DOMAIN = "www.2bhkflatforsaleinfaridabad.com";
+const DOMAIN = "www.propertydealerinfaridabad.com";
 
-export const PropertyProvider = ({ children }) => {
-
-  // ✅ FIXED DOMAIN
-  const [domain] = useState(DEFAULT_DOMAIN);
-
-  const [properties, setProperties] = useState([]);
+export const DealerProvider = ({ children }) => {
+  const [dealers, setDealers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const lastFetchedDomain = useRef(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(100);
 
-  // ================= MAIN DOMAIN PROPERTIES =================
-  const getPropertiesByDomain = async () => {
+  const [totalItems, setTotalItems] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
 
-    if (lastFetchedDomain.current === domain && properties.length > 0) {
-      return;
-    }
-
-    lastFetchedDomain.current = domain;
-
+  const fetchDealers = async (page = currentPage) => {
     try {
       setLoading(true);
       setError(null);
 
       const res = await axios.get(
-        `https://faridabad-backend.onrender.com/api/listed-properties/getPropertiesByDomain/${domain}`
+        `https://property-dealer-xa5g.onrender.com/api/get/getDealers/${DOMAIN}?page=${page}&limit=${itemsPerPage}`
       );
-console.log("API Response:", res.data);
-      setProperties(res.data?.data || []);
+
+      console.log("Dealer API:", res.data);
+
+      setDealers(res?.data?.data || []);
+
+      setTotalItems(
+        res?.data?.total ||
+        res?.data?.totalItems ||
+        0
+      );
+
+      setTotalPages(
+        res?.data?.totalPages ||
+        Math.ceil(
+          (res?.data?.total || 0) / itemsPerPage
+        )
+      );
     } catch (err) {
-      lastFetchedDomain.current = null;
-      setError("Something went wrong");
+      console.error(err);
+      setError("Failed to fetch dealers");
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    getPropertiesByDomain();
-  }, []);
+    fetchDealers(currentPage);
+  }, [currentPage]);
 
-  // ================= LOCALITY BASED =================
-  const [data, setData] = useState(null);
-  const [loading2, setLoading2] = useState(false);
-  const [error2, setError2] = useState(null);
-  const [locality, setLocality] = useState(null);
-
-  const decodeSlugWithHyphen = (str) =>
-    decodeURIComponent(str).trim().replace(/-/g, " ");
-
-  const fetchPropertiesByLocality = async () => {
-    if (!locality) return;
-
-    try {
-      setLoading2(true);
-      setError2(null);
-
-      const response = await axios.get(
-        `https://faridabad-backend.onrender.com/api/listed-properties/getPropertiesByDomainAndLocality/${domain}/${decodeSlugWithHyphen(locality)}`
-      );
-
-      setData(response?.data?.data || []);
-    } catch (err) {
-      setError2("Data fetch nahi ho paaya");
-    } finally {
-      setLoading2(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchPropertiesByLocality();
-  }, [locality]);
-
-  // ================= PROVIDER =================
   return (
-    <PropertyContext.Provider
+    <DealerContext.Provider
       value={{
-        properties,
+        dealers,
         loading,
         error,
-        refetch: getPropertiesByDomain,
 
-        // locality based
-        data,
-        loading2,
-        error2,
-        setLocality,
-        locality,
+        currentPage,
+        setCurrentPage,
+
+        totalItems,
+        totalPages,
+        itemsPerPage,
+
+        refetch: fetchDealers,
       }}
     >
       {children}
-    </PropertyContext.Provider>
+    </DealerContext.Provider>
   );
 };
 
-// ================= SAFE HOOK =================
-export const useProperty = () => {
-  const context = useContext(PropertyContext);
+export const useDealer = () => {
+  const context = useContext(DealerContext);
 
   if (!context) {
-    throw new Error("useProperty must be used within PropertyProvider");
+    throw new Error(
+      "useDealer must be used within DealerProvider"
+    );
   }
 
   return context;

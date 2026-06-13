@@ -8,7 +8,7 @@ export default function Pagination({
 }) {
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
-  if (totalPages <= 1) return null;
+
 
   const maxVisible = 3;
 

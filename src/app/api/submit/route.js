@@ -3,31 +3,32 @@ export async function POST(req) {
     const body = await req.json();
 
     const googleRes = await fetch(
-           "https://script.google.com/macros/s/AKfycbyzUoqB5pKUiEPE61nD_85t5WX_XtuL7hNnfTUDMYTK193f2UuVcTw7eqB-9FaucWls/exec",
-
+      "https://script.google.com/macros/s/AKfycbyzUoqB5pKUiEPE61nD_85t5WX_XtuL7hNnfTUDMYTK193f2UuVcTw7eqB-9FaucWls/exec",
       {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       }
     );
 
-    if (!googleRes.ok) {
+    const text = await googleRes.text();
+
+    let result;
+    try {
+      result = JSON.parse(text);
+    } catch {
+      // console.error("Google returned non-JSON:", text);
       return Response.json(
-        { success: false, error: "Google Script Error" },
+        { success: false, error: "Invalid response from Google Script" },
         { status: 500 }
       );
-    }
+    } 
 
-    const data = await googleRes.json();
+    return Response.json(result);
 
-    return Response.json(data);
-
-  } catch (error) {
+  } catch (err) {
     return Response.json(
-      { success: false, error: error.message },
+      { success: false, error: err.message },
       { status: 500 }
     );
   }

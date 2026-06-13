@@ -23,7 +23,7 @@ const Navbar = () => {
               href="/"
               className="text-xl sm:text-2xl font-bold tracking-wide text-white transition duration-300 hover:opacity-90"
             >
-              Real Estate Agents in Faridabad
+              DA
             </Link>
 
             {/* ================= DESKTOP LINKS ================= */}

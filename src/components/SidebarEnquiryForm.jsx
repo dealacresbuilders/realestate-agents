@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import AlertPopup from "@/components/AlertPopup";
 
 const SidebarEnquiryForm = () => {
   const [formData, setFormData] = useState({
@@ -8,10 +9,30 @@ const SidebarEnquiryForm = () => {
     phone: "",
     message: "",
   });
-
+const [error, setError] = useState("");
+const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+
+  const [popup, setPopup] = useState({
+    open: false,
+    type: "success",
+    message: "",
+  });
+
+  const showPopup = (type, message) => {
+    setPopup({
+      open: true,
+      type,
+      message,
+    });
+  };
+
+  const closePopup = () => {
+    setPopup((prev) => ({
+      ...prev,
+      open: false,
+    }));
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,44 +42,76 @@ const SidebarEnquiryForm = () => {
       if (value.length > 10) return;
     }
 
-    setFormData({ ...formData, [name]: value });
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
-    setSuccess("");
 
     if (formData.phone.length !== 10) {
-      setError("Phone number must be exactly 10 digits.");
+      showPopup(
+        "error",
+        "Phone number must be exactly 10 digits."
+      );
       return;
     }
 
     try {
       setLoading(true);
 
+      const payload = {
+        ...formData,
+        website:
+          "realestateagentinfaridabad.com",
+        source:
+          "Residential Sidebar Enquiry — Buy House in Faridabad",
+      };
+
+      console.log("PAYLOAD:", payload);
+
       const res = await fetch("/api/submit", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type":
+            "application/json",
         },
-        body: JSON.stringify({
-          ...formData,
-          source: "Sidebar Enquiry Form",
-        }),
+        body: JSON.stringify(payload),
       });
+
+      console.log("STATUS:", res.status);
 
       const data = await res.json();
 
-      if (data.success) {
-        setSuccess("Request submitted successfully!");
-        setFormData({ name: "", phone: "", message: "" });
-      } else {
-        setError(data.error || "Something went wrong.");
-      }
+      console.log("RESPONSE:", data);
 
+      if (data.success) {
+        showPopup(
+          "success",
+          "Your enquiry has been submitted successfully!"
+        );
+
+        setFormData({
+          name: "",
+          phone: "",
+          message: "",
+        });
+      } else {
+        showPopup(
+          "error",
+          data.message ||
+            "Something went wrong. Please try again."
+        );
+      }
     } catch (err) {
-      setError("Network error. Please try again.");
+      console.log("ERROR:", err);
+
+      showPopup(
+        "error",
+        "Server error. Please try again later."
+      );
     } finally {
       setLoading(false);
     }
@@ -147,6 +200,12 @@ const SidebarEnquiryForm = () => {
         </button>
 
       </form>
+       <AlertPopup
+        open={popup.open}
+        type={popup.type}
+        message={popup.message}
+        onClose={closePopup}
+      />
     </div>
   );
 };
