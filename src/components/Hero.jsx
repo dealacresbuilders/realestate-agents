@@ -97,24 +97,20 @@ setPopup({
   />
         {/* LEFT CONTENT */}
         <div className="md:col-span-7 lg:col-span-8 text-white">
-          <h1 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-            Trusted Real Estate Agents in{" "}
+          <h1 className="text-2xl lg:text-4xl font-bold mb-6 leading-tight">
+            Find Trusted Real Estate Agents in{" "}
             <span className="bg-white text-[#AF1740] px-3 py-1 rounded">
-              Faridabad
+              Faridabad Near You
             </span>
           </h1>
 
-          <p className="text-lg max-w-2xl text-red-100 leading-relaxed">
-            Looking for reliable and experienced real estate agents in Faridabad? 
-            Our expert team helps you buy, sell, and invest in verified properties 
-            with complete transparency and legal clarity.
+          <p className="text-lg max-w-5xl text-red-100 leading-relaxed">
+            Buying, selling, or renting a property is rarely just a transaction — it's a decision that affects your family, your finances, and sometimes your peace of mind for years to come. And in a city as large and fast-moving as Faridabad, finding the right person to guide you through that decision can feel harder than finding the property itself.
+That's exactly the gap we set out to fill.
+This platform is a dedicated directory of real estate agents and property dealers across Faridabad — from NIT and Sector 15 to Ballabhgarh, Greater Faridabad, and every neighbourhood in between. We don't sell properties ourselves. We simply help you find a local agent who knows the area, knows the market, and can actually be reached when you call.
+Every agent listed here comes with their area of specialisation, years of experience, contact details, and the type of properties they usually deal in — residential, commercial, rental, or agricultural. No more relying on a random number scribbled on a "To-Let" board.
+Whether you're a first-time buyer, an NRI selling ancestral property, or a tenant looking for a flat near your workplace — start here, and talk to someone who actually knows Faridabad.
 
-            We provide professional guidance, property valuation support, 
-            site visits, negotiation assistance, and smooth documentation handling 
-            to ensure a hassle-free real estate experience.
-
-            Whether you are a first-time buyer, seller, or investor, 
-            we help you make confident and profitable property decisions.
           </p>
         </div>
 

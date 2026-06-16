@@ -1,4 +1,5 @@
 import AboutPage from "./AboutPage";
+import AgentFAQSection from "./AgentFAQSection";
 
 
 // export const metadata = {
@@ -14,6 +15,7 @@ export default function Page() {
   return (
     <>
      <AboutPage/>
+     <AgentFAQSection/>
     </>
   );
 }
