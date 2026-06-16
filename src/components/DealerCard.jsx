@@ -45,14 +45,14 @@ console.log("URL:", url);
 
     {/* AVATAR */}
     <div className="w-12 h-12 md:w-14 md:h-14 flex-shrink-0 rounded-full bg-gradient-to-br from-[#AF1740] to-[#7A102D] flex items-center justify-center font-bold text-white shadow-md text-sm md:text-base">
-      {getInitials(dealer.name)}
+      {getInitials(dealer.companyName)}
     </div>
 
     {/* TEXT */}
     <div className="flex flex-col gap-1 min-w-0">
 
       <h3 className="text-base md:text-xl font-bold text-black leading-tight line-clamp-1">
-        {dealer.name}
+        {dealer.companyName}
       </h3>
 
       <div className="flex items-start gap-1 text-black mt-1">

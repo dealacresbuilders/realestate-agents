@@ -5,7 +5,7 @@ import axios from "axios";
 
 const DealerContext = createContext(null);
 
-const DOMAIN = "www.propertydealerinfaridabad.com";
+
 
 export const DealerProvider = ({ children }) => {
   const [dealers, setDealers] = useState([]);
@@ -13,7 +13,7 @@ export const DealerProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(100);
+  const [itemsPerPage] = useState(200);
 
   const [totalItems, setTotalItems] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
@@ -24,7 +24,7 @@ export const DealerProvider = ({ children }) => {
       setError(null);
 
       const res = await axios.get(
-        `https://property-dealer-xa5g.onrender.com/api/get/getDealers/${DOMAIN}?page=${page}&limit=${itemsPerPage}`
+        `https://faridabad-backend.onrender.com/api/getServiceProvidersByCity/faridabad`
       );
 
       console.log("Dealer API:", res.data);

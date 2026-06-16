@@ -64,7 +64,7 @@ const {
       ))}
     </div>
 
-    <Pagination
+    {/* <Pagination
       totalItems={totalItems}
       itemsPerPage={itemsPerPage}
       currentPage={currentPage}
@@ -75,7 +75,7 @@ const {
           behavior: "smooth",
         });
       }}
-    />
+    /> */}
   </div>
 
   {/* Right Sidebar */}
