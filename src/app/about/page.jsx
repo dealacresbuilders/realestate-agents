@@ -2,14 +2,29 @@ import AboutPage from "./AboutPage";
 import AgentFAQSection from "./AgentFAQSection";
 
 
-// export const metadata = {
-//   title: "About Us | Trusted House Rental Experts in Faridabad | Real Estate Consultants",
-//   description:
-//     "We are Faridabad's most trusted real estate platform for houses on rent. 100% verified rental listings, zero brokerage & expert guidance. Helping families & working professionals find their perfect rental home in Faridabad.",
-//   keywords: [
-//   "house rental experts Faridabad", "trusted real estate agents Faridabad", "rental home consultants Faridabad", "verified rental houses Faridabad", "best property dealers Faridabad", "Faridabad rental property experts", "no brokerage house rent Faridabad", "about us real estate Faridabad", "house on rent dealers Faridabad", "rental home experts Faridabad"
-//   ],
-// };
+export const metadata = {
+  title: "About Us | Faridabad Real Estate Agent Directory Site",
+  description:
+    "Learn how our Faridabad real estate agent directory verifies local property dealers by area and specialisation, helping you find a trustworthy agent faster.",
+keywords: [
+  "faridabad real estate agent directory",
+  "verified property dealers faridabad",
+  "about real estate agents faridabad",
+  "trusted agent directory faridabad",
+  "how are agents verified on this faridabad directory",
+  "is this real estate platform a brokerage",
+  "free real estate agent listing faridabad",
+  "no paid ranking",
+  "agent verification",
+  "local knowledge",
+  "specialisation by area",
+  "sub-broker",
+  "rera haryana"
+],
+   alternates: {
+    canonical: "https://www.realestateagentsinfaridabad.com/about",
+  },
+};
 
 export default function Page() {
   return (

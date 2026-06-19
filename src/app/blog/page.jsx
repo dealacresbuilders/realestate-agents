@@ -3,14 +3,26 @@ import BlogList from "./BlogList";
 
 export async function generateMetadata() {
   return {
-    title: "House Rental Blog | Renting Tips, Tenant Guide & Property News in Faridabad",
+    title: "Faridabad Real Estate Blog | Agent Tips & Market News",
     description:
-      "Read expert blogs on house renting tips in Faridabad, rental market trends, tenant rights, rent agreement guide, best localities to rent a house & property news to help you make the smartest rental decision.",
-    keywords: [
-      "house rental blog Faridabad", "renting tips Faridabad", "rental market trends Faridabad", "tenant rights India", "rent agreement guide Faridabad", "best localities to rent house Faridabad", "real estate news Faridabad", "affordable rental homes Faridabad", "house rent price trends Faridabad", "independent house rental checklist Faridabad"
-    ],
+      "Get expert tips on choosing a real estate agent in Faridabad, brokerage norms, rental advice, and local property market news updated regularly for you.",
+   keywords: [
+  "faridabad real estate agent blog",
+  "how to choose a real estate agent faridabad",
+  "brokerage fee faridabad",
+  "faridabad property market news",
+  "how to find a reliable real estate agent in faridabad",
+  "standard brokerage fee charged by agents in faridabad",
+  "real estate agent vs property dealer difference",
+  "rera registration check",
+  "brokerage percentage",
+  "agent verification tips",
+  "rental agreement",
+  "nri property sale",
+  "sub-broker"
+],
     alternates: {
-      canonical: "www.houseforrentinfaridabad.com/blog", // 🔥 apna final domain yaha set kar dena
+      canonical: "www.realestateagentsinfaridabad.com/blog", // 🔥 apna final domain yaha set kar dena
     },
   };
 }

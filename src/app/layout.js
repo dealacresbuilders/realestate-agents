@@ -17,8 +17,38 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Real Estate Agents Faridabad",
-  description: "Find verified real estate agents in Faridabad with best deals.",
+  title:
+    "Real Estate Agents in Faridabad | Verified Local Dealers",
+
+  description:
+    "Find verified real estate agents in Faridabad by area & specialisation. Compare local property dealers for residential, commercial, rental & plot deals.",
+
+keywords: [
+  "real estate agents in faridabad",
+  "property dealers faridabad",
+  "verified real estate agents faridabad",
+  "faridabad agent directory",
+  "find a real estate agent near me in faridabad",
+  "best property dealers in faridabad 2025",
+  "real estate agents by sector in faridabad",
+  "property dealer",
+  "broker",
+  "rera registered agent",
+  "local agent directory",
+  "agent specialisation",
+  "nit faridabad",
+  "ballabhgarh",
+  "greater faridabad"
+],
+
+  alternates: {
+    canonical: "https://www.realestateagentsinfaridabad.com/",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({ children }) {
