@@ -97,7 +97,7 @@ const createSlug = (location) => {
 export default function Footer() {
   const [showAll, setShowAll] = useState(false);
 
-  const initialCount = 50;
+  const initialCount = 30;
   const visibleLocations = showAll
     ? locations
     : locations.slice(0, initialCount);
