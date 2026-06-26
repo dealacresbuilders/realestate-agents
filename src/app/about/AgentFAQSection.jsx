@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import DisclaimerSection from "./DisclaimerSection";
 
 export default function AgentFAQSection() {
   const [active, setActive] = useState(0);
@@ -118,6 +119,7 @@ export default function AgentFAQSection() {
 
        
       </div>
+      <DisclaimerSection/>
     </section>
   );
 }
