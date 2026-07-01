@@ -54,6 +54,24 @@ export default function AgentFAQSection() {
   ];
 
   return (
+    <>
+        <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+              },
+            })),
+          }),
+        }}
+        />
     <section className="py-6 bg-[#FFF6F8]">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
@@ -119,5 +137,6 @@ export default function AgentFAQSection() {
        
       </div>
     </section>
+    </>
   );
 }
